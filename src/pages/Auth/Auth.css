@@ -1,0 +1,202 @@
+.Auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 4rem;
+    position: relative;
+  }
+  
+  .Auth > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  
+  /* left side */
+  .a-left{
+      gap: 2rem;
+  }
+  
+  .a-left > img {
+    width: 4rem;
+    height: 4rem;
+  }
+  
+  .Webname > h1 {
+      font-size: 3rem;
+      background-color: red;
+    
+      /* Create the gradient. */
+      background-image: var(--buttonBg);
+      
+      /* Set the background size and repeat properties. */
+      background-size: 100%;
+      background-repeat: repeat;
+    
+      /* Use the text as a mask for the background. */
+      /* This will show the gradient as a text color rather than element bg. */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; 
+      -moz-background-clip: text;
+      -moz-text-fill-color: transparent;
+  }
+  
+  .Webname>h6{
+      font-size: 0.85rem;
+  }
+
+
+
+  .infoForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 300px;
+   
+  }
+  
+  .infoInput{
+    border: none;
+    outline: none;
+    background-color: var(--inputColor);
+    border-radius: 8px;
+    padding: 20px;
+    flex:1;
+  }
+  
+  .infoForm>div{
+    display: flex;
+    gap: 1rem;
+    height: 2rem;
+    width: 90%;
+  }
+  
+  .infoButton{
+    width: 6rem;
+    height: 2rem;
+    align-self: flex-end;
+  }
+  
+  
+  .authForm{
+      background-color: var(--cardColor);
+      border-radius: 1rem;
+      padding: 1rem;
+  }
+  
+  .authForm>div{
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+  }
+  /* Login.css */
+
+.login-container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+input{
+  width:300px;
+  
+}
+
+.login-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+.login-form .form-group {
+  margin-bottom: 15px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #0056b3;
+}
+/* Register.css */
+
+.register-container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+.form-group{
+  width: 300px;
+ 
+}
+.register-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+.register-form .form-group {
+  margin-bottom: 15px;
+}
+
+.register-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.register-form input[type="text"],
+.register-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.register-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.register-form button:hover {
+  background-color: #0056b3;
+}
