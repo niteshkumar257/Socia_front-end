@@ -9,7 +9,7 @@ export const userLogin=createAsyncThunk("userLogin",async(userInfo)=>
 {
   
     const data=await axios.post(`${base_url}/auth/login`,userInfo);
-   
+     console.log(data);
     return data.data;
 })
 

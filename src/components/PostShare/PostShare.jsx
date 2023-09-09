@@ -9,6 +9,8 @@ import { UilTimes } from "@iconscout/react-unicons";
 import { useDispatch, useSelector } from "react-redux";
 import { createNewpost ,getAllPosts} from "../../slices/PostSlice";
 import jwtDecode from "jwt-decode";
+import axios from "axios";
+import { base_url } from "../../utils/apiRoutes";
 
 
 const PostShare = () => {
@@ -36,11 +38,22 @@ const PostShare = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
-     
-   if(userId) dispatch(createNewpost({userId,desc}));
-   
-  setDesc("");
+  if(!userId) return ;
+  if(!desc) return ;
+  console.log(userId);
+     axios.post(`${base_url}/post/createPost`,{
+      userId:userId,desc:desc
+     }).then((res)=>
+     {
+      if(res.status==200)
+      {
+         dispatch(getAllPosts({userId})); 
+         setDesc("");
+      }
+     }).catch((err)=>
+     {
+        console.log(err);
+     })
    
 
    

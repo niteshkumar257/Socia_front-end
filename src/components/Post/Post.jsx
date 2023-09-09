@@ -4,14 +4,26 @@ import Comment from '../../img/comment.png'
 import Share from '../../img/share.png'
 import Heart from '../../img/like.png'
 import NotLike from '../../img/notlike.png'
+import axios from 'axios'
+import { base_url } from '../../utils/apiRoutes'
+import {useSelector,useDispatch} from "react-redux"
+import { getAllPosts } from '../../slices/PostSlice'
 
 
 const Post = ({data}) => {
 
-
-  const DeletePost=()=>
+   const dispatch=useDispatch();
+  const DeletePost=(userId,postId)=>
   {
-
+    console.log(userId)
+       axios.delete(`${base_url}/post/${postId}/${userId}`).then((res)=>
+       {
+        console.log(res);
+        dispatch(getAllPosts({userId}));
+       }).catch((err)=>
+       {
+        console.log(err);
+       })
   }
 
 
@@ -24,7 +36,7 @@ const Post = ({data}) => {
             <img src={data.liked?Heart: NotLike} alt="" />
             <img src={Comment} alt="" />
             <img src={Share} alt="" />
-             <button onClick={()=>DeletePost()} className="button ps-button" style={{height:30,width:100}}>Delete</button>
+             <button onClick={()=>DeletePost(data.userId,data._id)} className="button ps-button" style={{height:30,width:100}}>Delete</button>
         </div>
 
 
