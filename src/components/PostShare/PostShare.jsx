@@ -6,11 +6,19 @@ import { UilPlayCircle } from "@iconscout/react-unicons";
 import { UilLocationPoint } from "@iconscout/react-unicons";
 import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
+import { useDispatch, useSelector } from "react-redux";
+import { createNewpost ,getAllPosts} from "../../slices/PostSlice";
+import jwtDecode from "jwt-decode";
 
 
 const PostShare = () => {
   const [image, setImage] = useState(null);
   const imageRef = useRef();
+  const dispatch = useDispatch();
+  const userToken = localStorage.getItem("user-token");
+  const userInfo = jwtDecode(userToken);
+  const posts=useSelector((state)=>state.Posts)
+  const userId = userInfo.userDetails._id;
 
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -20,14 +28,39 @@ const PostShare = () => {
       });
     }
   };
+
+  const [desc, setDesc] = useState("");
+  
+  const handleChange = (e) => {
+    setDesc(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+     
+   if(userId) dispatch(createNewpost({userId,desc}));
+   
+  setDesc("");
+   
+
+   
+  };
+
   return (
     <div className="PostShare">
       <img src={ProfileImage} alt="" />
       <div>
-        <input type="text" placeholder="What's happening" />
+        <input
+          type="text"
+          placeholder="What's happening"
+          onChange={handleChange}
+          value={desc}
+        />
         <div className="postOptions">
-          <div className="option" style={{ color: "var(--photo)" }}
-          onClick={()=>imageRef.current.click()}
+          <div
+            className="option"
+            style={{ color: "var(--photo)" }}
+            onClick={() => imageRef.current.click()}
           >
             <UilScenery />
             Photo
@@ -44,7 +77,9 @@ const PostShare = () => {
             <UilSchedule />
             Shedule
           </div>
-          <button className="button ps-button">Share</button>
+          <button className="button ps-button" onClick={handleSubmit}>
+            Share
+          </button>
           <div style={{ display: "none" }}>
             <input
               type="file"
@@ -54,16 +89,12 @@ const PostShare = () => {
             />
           </div>
         </div>
-      {image && (
-
-        <div className="previewImage">
-          <UilTimes onClick={()=>setImage(null)}/>
-          <img src={image.image} alt="" />
-        </div>
-
-      )}
-
-
+        {image && (
+          <div className="previewImage">
+            <UilTimes onClick={() => setImage(null)} />
+            <img src={image.image} alt="" />
+          </div>
+        )}
       </div>
     </div>
   );

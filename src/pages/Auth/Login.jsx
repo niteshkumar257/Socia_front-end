@@ -9,6 +9,8 @@ const Login = () => {
   const Auth = useSelector((state) => state.Auth);
 
   useEffect(() => {
+
+    console.log("hello thre")
     if (Auth?.Token) navigate('/profile');
   }, [Auth, navigate]);
 

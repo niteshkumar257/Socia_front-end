@@ -7,6 +7,14 @@ import NotLike from '../../img/notlike.png'
 
 
 const Post = ({data}) => {
+
+
+  const DeletePost=()=>
+  {
+
+  }
+
+
   return (
     <div className="Post">
         <img src={data.img} alt="" />
@@ -16,6 +24,7 @@ const Post = ({data}) => {
             <img src={data.liked?Heart: NotLike} alt="" />
             <img src={Comment} alt="" />
             <img src={Share} alt="" />
+             <button onClick={()=>DeletePost()} className="button ps-button" style={{height:30,width:100}}>Delete</button>
         </div>
 
 

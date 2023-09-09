@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Cover from "../../img/cover.jpg";
 import Profile from "../../img/profileImg.jpg";
 import "./ProfileCard.css";
-
-const ProfileCard = () => {
+import jwtDecode from "jwt-decode";
+import axios from "axios";
+import { base_url } from "../../utils/apiRoutes";
+const ProfileCard = ({userDetails}) => {
+ 
   const ProfilePage = true;
+   console.log(userDetails?.followers?.length);
   return (
     <div className="ProfileCard">
       <div className="ProfileImages">
@@ -13,7 +17,7 @@ const ProfileCard = () => {
       </div>
 
       <div className="ProfileName">
-        <span>Zendaya MJ</span>
+        <span>{userDetails?.firstname}</span>
         <span>Senior UI/UX Designer</span>
       </div>
 
@@ -21,12 +25,12 @@ const ProfileCard = () => {
         <hr />
         <div>
           <div className="follow">
-            <span>6,890</span>
+            <span>{userDetails?.following.length}</span>
             <span>Followings</span>
           </div>
           <div className="vl"></div>
           <div className="follow">
-            <span>1</span>
+            <span>{userDetails?.followers?.length}</span>
             <span>Followers</span>
           </div>
 
