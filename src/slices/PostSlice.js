@@ -20,7 +20,7 @@ export const createNewpost=createAsyncThunk("createNewpost",async({userId,desc})
       userId:userId,
       desc:desc
      });
-     console.log(res);
+    
      return res.status;
 })
 
