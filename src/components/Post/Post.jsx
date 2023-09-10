@@ -18,9 +18,11 @@ const Post = ({ data }) => {
   const userToken = localStorage.getItem("user-token");
   const user = jwtDecode(userToken);
   const userId = user.userDetails._id;
-  console.log(data.likes);
+ 
   const [liked, setLiked] = useState(data.likes?.includes(userId));
   const [likes, setLikes] = useState(data.likes.length);
+  const [isEditClicked,setIsEditCliked]=useState(false);
+  const [newMessage,setNewMessaage]=useState("");
 
   const DeletePost = (userId, postId) => {
     axios
@@ -56,6 +58,32 @@ const Post = ({ data }) => {
 
   };
 
+  const editPost=(postId)=>
+  {
+      setIsEditCliked(true);
+      setNewMessaage(data.desc);
+
+  }
+  const EditPost=(postId)=>
+  {
+
+    console.log(`${base_url}/post/${postId}/updatePost`);
+      axios.put(`${base_url}/post/${postId}/updatePost`,{
+        userId,desc:newMessage
+      }).then((res)=>{
+        console.log(res);
+           setIsEditCliked(false);
+           setNewMessaage("");
+           dispatch(getAllPosts({userId}))
+           
+      }).catch((err)=>
+      {
+        console.log(err);
+        setIsEditCliked(false);
+        setNewMessaage("");
+      })
+  }
+
   return (
     <div className="Post">
       <img src={data.img} alt="" />
@@ -73,7 +101,7 @@ const Post = ({ data }) => {
         />
         }
        
-        <AiOutlineEdit size={30} style={{ cursor: "pointer" }} />
+        <AiOutlineEdit size={30} style={{ cursor: "pointer" }} onClick={editPost} />
 
         <AiOutlineDelete
           onClick={() => DeletePost(data.userId, data._id)}
@@ -92,7 +120,18 @@ const Post = ({ data }) => {
         <span>
           <b>{data.name}</b>
         </span>
-        <span> {data.desc}</span>
+        {
+          isEditClicked  ?   <input
+          type="text"
+          name="newMesssage"
+          value={newMessage}
+          onChange={(e)=>setNewMessaage(e.target.value)}
+          ></input> : <span> {data.desc}</span>
+        }
+       {
+        isEditClicked &&   <button onClick={()=>EditPost(data._id)}>Edit post</button>
+       }
+       
       </div>
     </div>
   );
