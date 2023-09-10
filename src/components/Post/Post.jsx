@@ -8,6 +8,8 @@ import axios from 'axios'
 import { base_url } from '../../utils/apiRoutes'
 import {useSelector,useDispatch} from "react-redux"
 import { getAllPosts } from '../../slices/PostSlice'
+import { AiOutlineDelete } from "react-icons/ai";
+import {AiOutlineLike} from "react-icons/ai"
 
 
 const Post = ({data}) => {
@@ -15,10 +17,10 @@ const Post = ({data}) => {
    const dispatch=useDispatch();
   const DeletePost=(userId,postId)=>
   {
-    console.log(userId)
+  
        axios.delete(`${base_url}/post/${postId}/${userId}`).then((res)=>
        {
-        console.log(res);
+         
         dispatch(getAllPosts({userId}));
        }).catch((err)=>
        {
@@ -33,10 +35,12 @@ const Post = ({data}) => {
 
 
         <div className="postReact">
-            <img src={data.liked?Heart: NotLike} alt="" />
-            <img src={Comment} alt="" />
-            <img src={Share} alt="" />
-             <button onClick={()=>DeletePost(data.userId,data._id)} className="button ps-button" style={{height:30,width:100}}>Delete</button>
+          
+           <AiOutlineLike size={30}/>
+          <AiOutlineDelete onClick={()=>DeletePost(data.userId,data._id)} size={30} style={{
+            cursor:'pointer'
+          }}/>
+            
         </div>
 
 
