@@ -9,6 +9,8 @@ const Login = () => {
   const Auth = useSelector((state) => state.Auth);
 
   useEffect(() => {
+
+    console.log("hello thre")
     if (Auth?.Token) navigate('/profile');
   }, [Auth, navigate]);
 
@@ -25,6 +27,8 @@ const Login = () => {
     e.preventDefault();
     dispatch(userLogin(data));
   };
+
+  
 
   return (
     <div className="login-container">

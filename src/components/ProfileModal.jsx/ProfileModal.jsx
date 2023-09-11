@@ -1,7 +1,43 @@
 import { Modal, useMantineTheme } from "@mantine/core";
+import jwtDecode from "jwt-decode";
+import axios from "axios";
+import { base_url } from "../../utils/apiRoutes";
+import { useState } from "react";
 
 function ProfileModal({ modalOpened, setModalOpened }) {
   const theme = useMantineTheme();
+  const userToken = localStorage.getItem("user-token");
+  const user = jwtDecode(userToken);
+  const userId = user.userDetails._id;
+
+
+  const [userDetails,setUserDetails]=useState({
+    Firstname:"",
+    lastname:"",
+    worksAt:"",
+    livesIN:"",
+    Country:"",
+    relationShip:""
+
+  })
+  const handleChange=(e)=>
+  {
+       setUserDetails({...userDetails,[e.target.name]:e.target.value});
+  }
+  const updateUserDetails=()=>
+  {
+     axios.put(`${base_url}\${userId}`,{
+      userId,userDetails
+     }).then((res)=>
+     {
+      console.log(res);
+     }).catch((err)=>
+     {
+      console.log(err);
+     })
+  }
+
+  
 
   return (
     <Modal
@@ -25,6 +61,7 @@ function ProfileModal({ modalOpened, setModalOpened }) {
             className="infoInput"
             name="FirstName"
             placeholder="First Name"
+            onChange={handleChange}
           />
 
           <input
@@ -32,6 +69,7 @@ function ProfileModal({ modalOpened, setModalOpened }) {
             className="infoInput"
             name="LastName"
             placeholder="Last Name"
+            onChange={handleChange}
           />
         </div>
 
@@ -41,6 +79,7 @@ function ProfileModal({ modalOpened, setModalOpened }) {
             className="infoInput"
             name="worksAT"
             placeholder="Works at"
+            onChange={handleChange}
           />
         </div>
 
@@ -50,6 +89,7 @@ function ProfileModal({ modalOpened, setModalOpened }) {
             className="infoInput"
             name="livesIN"
             placeholder="LIves in"
+            onChange={handleChange}
           />
 
           <input
@@ -57,6 +97,7 @@ function ProfileModal({ modalOpened, setModalOpened }) {
             className="infoInput"
             name="Country"
             placeholder="Country"
+            onChange={handleChange}
           />
         </div>
 
@@ -64,7 +105,9 @@ function ProfileModal({ modalOpened, setModalOpened }) {
           <input
             type="text"
             className="infoInput"
+            name="relationShip"
             placeholder="RelationShip Status"
+            onChange={handleChange}
           />
         </div>
 

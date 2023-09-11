@@ -20,6 +20,7 @@ const Register = () => {
 
   const handleForm = (e) => {
     e.preventDefault();
+    console.log(data);
     dispatch(userRegister(data));
   };
 

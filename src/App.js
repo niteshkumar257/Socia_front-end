@@ -26,6 +26,7 @@ function App() {
           <Route path="/profile" element={user?<Profile/>:<Navigate to='/login'/>}/>
           <Route path="/login" element={user?<Navigate to="/profile"/>:<Login/>}/>
           <Route path="/register" element={user?<Navigate to="/profile"/>:<Register/>}/>
+          <Route    path="/profile/:id" element={<Profile/>}/>
         </Routes>
 
         {/* <Auth/> */}

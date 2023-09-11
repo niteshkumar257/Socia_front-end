@@ -29,6 +29,7 @@ const AuthSlice=createSlice({
        userDetails:null,
        isAdmin:false,
        isAuth:false,
+       
     },
     reducers:{
         userLogout:(state,action)=>

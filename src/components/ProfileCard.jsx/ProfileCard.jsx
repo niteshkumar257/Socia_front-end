@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Cover from "../../img/cover.jpg";
 import Profile from "../../img/profileImg.jpg";
 import "./ProfileCard.css";
-
-const ProfileCard = () => {
+import jwtDecode from "jwt-decode";
+import axios from "axios";
+import { base_url } from "../../utils/apiRoutes";
+import { UseSelector, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+const ProfileCard = ({userDetails}) => {
+ 
   const ProfilePage = true;
+  
+   const allPost=useSelector((state)=>state.Posts)?.allPost;
+   console.log(userDetails);
+  
+ const newPostList= allPost.filter((post)=>post.userId===userDetails._id);
+  
+  
+ 
+ 
   return (
     <div className="ProfileCard">
       <div className="ProfileImages">
@@ -13,7 +27,7 @@ const ProfileCard = () => {
       </div>
 
       <div className="ProfileName">
-        <span>Zendaya MJ</span>
+        <span>{userDetails?.firstname}</span>
         <span>Senior UI/UX Designer</span>
       </div>
 
@@ -21,12 +35,12 @@ const ProfileCard = () => {
         <hr />
         <div>
           <div className="follow">
-            <span>6,890</span>
+            <span>{userDetails?.following.length}</span>
             <span>Followings</span>
           </div>
           <div className="vl"></div>
           <div className="follow">
-            <span>1</span>
+            <span>{userDetails?.followers?.length}</span>
             <span>Followers</span>
           </div>
 
@@ -34,7 +48,7 @@ const ProfileCard = () => {
             <>
               <div className="vl"></div>
               <div className="follow">
-                <span>3</span>
+                <span>{newPostList?.length}</span>
                 <span>Posts</span>
               </div>
             </>
@@ -42,7 +56,12 @@ const ProfileCard = () => {
         </div>
         <hr />
       </div>
-      {ProfilePage ? "" : <span>My Profile</span>}
+      <span>
+          <Link to={`/profile/${userDetails?._id}`} style={{ textDecoration: "none", color: "inherit" }}>
+            My Profile
+          </Link>
+        </span>
+      
     </div>
   );
 };
