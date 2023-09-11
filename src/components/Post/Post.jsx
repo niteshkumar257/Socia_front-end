@@ -100,16 +100,16 @@ const Post = ({ data }) => {
         onClick={() => likePost(data._id)}
         />
         }
-       
-        <AiOutlineEdit size={30} style={{ cursor: "pointer" }} onClick={editPost} />
-
-        <AiOutlineDelete
+       {data.userId===userId &&   <AiOutlineEdit size={30} style={{ cursor: "pointer" }} onClick={editPost} /> }
+      
+        {data.userId===userId &&   <AiOutlineDelete
           onClick={() => DeletePost(data.userId, data._id)}
           size={30}
           style={{
             cursor: "pointer",
           }}
-        />
+        />}
+       
       </div>
 
       <span style={{ color: "var(--gray)", fontSize: "12px" }}>
@@ -125,11 +125,12 @@ const Post = ({ data }) => {
           type="text"
           name="newMesssage"
           value={newMessage}
+          className="input-field"
           onChange={(e)=>setNewMessaage(e.target.value)}
           ></input> : <span> {data.desc}</span>
         }
        {
-        isEditClicked &&   <button onClick={()=>EditPost(data._id)}>Edit post</button>
+        isEditClicked &&   <button  className="button ps-button" onClick={()=>EditPost(data._id)}>Edit post</button>
        }
        
       </div>

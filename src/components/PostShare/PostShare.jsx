@@ -38,9 +38,15 @@ const PostShare = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
+
   if(!userId) return ;
   if(!desc) return ;
-  console.log(userId);
+
+
+ const formData=new FormData();
+   formData.append("image",imageRef);
+  
      axios.post(`${base_url}/post/createPost`,{
       userId:userId,desc:desc
      }).then((res)=>

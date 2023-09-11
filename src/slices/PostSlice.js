@@ -8,8 +8,8 @@ import jwtDecode from "jwt-decode";
 export const getAllPosts = createAsyncThunk("getAllposts", async ({userId}) => {
     
   console.log(userId);
-  const res = await axios.get(`${base_url}/post/${userId}/allPosts`);
-
+  const res = await axios.get(`${base_url}/post/${userId}/timeline`);
+ 
   return res.data;
 });
 
@@ -20,7 +20,7 @@ export const createNewpost=createAsyncThunk("createNewpost",async({userId,desc})
       userId:userId,
       desc:desc
      });
-    
+     console.log(res);
      return res.status;
 })
 
@@ -41,7 +41,7 @@ const PostSlice = createSlice({
     builder.addCase(getAllPosts.fulfilled, (state, action) => {
         
       state.isLoading = false;
-      state.allPost = action.payload.allPost;
+      state.allPost = action.payload;
     });
     builder.addCase(getAllPosts.rejected, (state, action) => {
       state.isError = true;

@@ -7,7 +7,8 @@ import { userLogout } from "../../slices/Authslice";
 import { useNavigate } from "react-router-dom";
 
 
-const InfoCard = () => {
+const InfoCard = ({ProfileDetails}) => {
+  console.log(ProfileDetails);
   const dispatch=useDispatch();
   const navigate=useNavigate();
   

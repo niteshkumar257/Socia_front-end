@@ -5,10 +5,13 @@ import "./ProfileCard.css";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 import { base_url } from "../../utils/apiRoutes";
+import { UseSelector, useSelector } from "react-redux";
 const ProfileCard = ({userDetails}) => {
  
   const ProfilePage = true;
-   console.log(userDetails?.followers?.length);
+  
+   const allPost=useSelector((state)=>state.Posts)?.allPost;
+ 
   return (
     <div className="ProfileCard">
       <div className="ProfileImages">
@@ -38,7 +41,7 @@ const ProfileCard = ({userDetails}) => {
             <>
               <div className="vl"></div>
               <div className="follow">
-                <span>3</span>
+                <span>{allPost?.length}</span>
                 <span>Posts</span>
               </div>
             </>

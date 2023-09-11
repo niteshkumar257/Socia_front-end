@@ -32,3 +32,12 @@
 .icon{
      cursor: pointer; 
 }
+.input-field{
+    border: none;
+    height: 30;
+    background-color:var(--inputBackgroundColor) ;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    border-radius: 9px;
+    
+}

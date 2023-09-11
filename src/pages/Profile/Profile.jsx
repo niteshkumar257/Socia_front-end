@@ -24,7 +24,7 @@ const Profile = () => {
 
   return (
     <div className="Profile">
-      <ProfileLeft />
+      <ProfileLeft ProfileDetails={ProfileDetails} />
 
       <div className="Profile-center">
         <ProfileCard userDetails={ProfileDetails?.userInfo} />
