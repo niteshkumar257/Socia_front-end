@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { UserDetails } from "../../slices/ProfileSlice";
 import jwtDecode from "jwt-decode";
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
   const userToken = localStorage.getItem("user-token");
@@ -22,12 +23,15 @@ const Profile = () => {
     dispatch(UserDetails(userId));
   }, []);
 
+  const {id}=useParams();
+  console.log(id);
+
   return (
     <div className="Profile">
-      <ProfileLeft ProfileDetails={ProfileDetails} />
-
+      <ProfileLeft ProfileDetails={ProfileDetails} id={id} />
+ {/* <ProfileCard userDetails={ProfileDetails?.userInfo} /> */}
       <div className="Profile-center">
-        <ProfileCard userDetails={ProfileDetails?.userInfo} />
+        { id!=undefined && <ProfileCard userDetails={ProfileDetails?.userInfo} /> }
         <PostSide userId={ProfileDetails?.userInfo?._id} />
       </div>
 

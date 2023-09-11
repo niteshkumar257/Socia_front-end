@@ -6,16 +6,38 @@ import Comment from "../../img/comment.png";
 import { UilSetting } from "@iconscout/react-unicons";
 import TrendCard from "../TrendCard/TrendCard";
 import ShareModal from "../ShareModal/ShareModal";
+import { BiHomeSmile } from "react-icons/bi";
+import { GrNotification } from "react-icons/gr";
+import { BsChatDots } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const RightSide = () => {
   const [modalOpened, setModalOpened] = useState(false);
   return (
     <div className="RightSide">
       <div className="navIcons">
-        <img src={Home} alt="" />
-        <UilSetting />
-        <img src={Noti} alt="" />
-        <img src={Comment} alt="" />
+        <Link
+          to="/profile"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          <BiHomeSmile
+            size={30}
+            style={{ textDecoration: "none", color: "inherit" }}
+          />
+        </Link>
+
+        <UilSetting
+          size={30}
+          style={{ textDecoration: "none", color: "inherit" }}
+        />
+        <GrNotification
+          size={30}
+          style={{ textDecoration: "none", color: "inherit" }}
+        />
+        <BsChatDots
+          size={30}
+          style={{ textDecoration: "none", color: "inherit" }}
+        />
       </div>
 
       <TrendCard />

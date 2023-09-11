@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const InfoCard = ({ProfileDetails}) => {
-  console.log(ProfileDetails);
+ 
   const dispatch=useDispatch();
   const navigate=useNavigate();
   

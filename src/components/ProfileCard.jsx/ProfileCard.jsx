@@ -6,11 +6,18 @@ import jwtDecode from "jwt-decode";
 import axios from "axios";
 import { base_url } from "../../utils/apiRoutes";
 import { UseSelector, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const ProfileCard = ({userDetails}) => {
  
   const ProfilePage = true;
   
    const allPost=useSelector((state)=>state.Posts)?.allPost;
+   console.log(userDetails);
+  
+ const newPostList= allPost.filter((post)=>post.userId===userDetails._id);
+  
+  
+ 
  
   return (
     <div className="ProfileCard">
@@ -41,7 +48,7 @@ const ProfileCard = ({userDetails}) => {
             <>
               <div className="vl"></div>
               <div className="follow">
-                <span>{allPost?.length}</span>
+                <span>{newPostList?.length}</span>
                 <span>Posts</span>
               </div>
             </>
@@ -49,7 +56,12 @@ const ProfileCard = ({userDetails}) => {
         </div>
         <hr />
       </div>
-      {ProfilePage ? "" : <span>My Profile</span>}
+      <span>
+          <Link to={`/profile/${userDetails?._id}`} style={{ textDecoration: "none", color: "inherit" }}>
+            My Profile
+          </Link>
+        </span>
+      
     </div>
   );
 };
