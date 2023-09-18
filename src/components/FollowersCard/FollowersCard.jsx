@@ -31,6 +31,7 @@ const FollowersCard = () => {
     .then((res)=>{
         
         setAllUser(res.data.users);
+        console.log(res.data.users);
 
     }).catch((err)=>
     {
@@ -71,8 +72,9 @@ const FollowersCard = () => {
               })
         }
      }
-
-  
+    
+     const baseURL = 'http://localhost:8080'
+   
   return (
     <div className="FollowersCard">
         <h3>People You may Know</h3>
@@ -85,7 +87,7 @@ const FollowersCard = () => {
             return( follower._id!=userId &&   !follower.followers.includes(userId) && 
                 <div key={id} className="follower">
                     <div>
-                        <img src={follower.img} alt="" className='followerImage' />
+                        <img src={`${baseURL}/images/${follower?.profilePicture}`} alt="" className='followerImage' />
                         <div className="name">
                             <span>{follower?.name}</span>
                             <span>@{follower.username}</span>

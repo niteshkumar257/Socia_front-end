@@ -8,6 +8,7 @@ import Login from "./pages/Auth/Login";
 import { BrowserRouter, Route, Routes ,Navigate} from "react-router-dom";
 import {useDispatch,useSelector} from "react-redux";
 import { userLogin } from "./slices/Authslice";
+import Chat from "./pages/Chat/Chat";
 function App() {
 
   const Auth=useSelector((state)=>state.Auth);
@@ -27,6 +28,8 @@ function App() {
           <Route path="/login" element={user?<Navigate to="/profile"/>:<Login/>}/>
           <Route path="/register" element={user?<Navigate to="/profile"/>:<Register/>}/>
           <Route    path="/profile/:id" element={<Profile/>}/>
+          <Route    path="/chat" element={user?<Chat/>:<Navigate to="/login"/>} />
+
         </Routes>
 
         {/* <Auth/> */}

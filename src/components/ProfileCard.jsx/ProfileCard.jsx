@@ -7,6 +7,8 @@ import axios from "axios";
 import { base_url } from "../../utils/apiRoutes";
 import { UseSelector, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import  coverPicture from "../../img/background2.jpg";
+
 const ProfileCard = ({userDetails}) => {
  
   const ProfilePage = true;
@@ -17,18 +19,27 @@ const ProfileCard = ({userDetails}) => {
  const newPostList= allPost.filter((post)=>post.userId===userDetails._id);
   
   
- 
+ const baseURL = 'http://localhost:8080'
+  const imageURL = `${baseURL}/images/${userDetails?.profilePicture}`;
+  const coverUrl= `${baseURL}/images/${userDetails?.coverPicture}`;
  
   return (
     <div className="ProfileCard">
       <div className="ProfileImages">
-        <img src={Cover} alt="" />
-        <img src={Profile} alt="" />
+      <img  style={{
+        height:"auto",
+        maxHeight:350
+      }} src={coverPicture} alt="profile image" />
+        <img style={{
+          height:100,
+          width:100,borderRadius:'50%'
+        }} src={imageURL} alt="profile image" />
+         
       </div>
 
       <div className="ProfileName">
         <span>{userDetails?.firstname}</span>
-        <span>Senior UI/UX Designer</span>
+        <span>{userDetails?.about}</span>
       </div>
 
       <div className="followStatus">

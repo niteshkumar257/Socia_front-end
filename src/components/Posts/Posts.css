@@ -4,3 +4,11 @@
     gap: 1rem;
     
 }
+.postImage{
+    display: flex;
+    justify-content:center;
+  
+    height: auto;
+  
+    object-fit: cover;
+}

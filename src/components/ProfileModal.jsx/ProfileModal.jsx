@@ -3,41 +3,61 @@ import jwtDecode from "jwt-decode";
 import axios from "axios";
 import { base_url } from "../../utils/apiRoutes";
 import { useState } from "react";
+import { useDispatch ,useSelector } from "react-redux";
+import { UserDetails } from "../../slices/ProfileSlice";
 
 function ProfileModal({ modalOpened, setModalOpened }) {
   const theme = useMantineTheme();
   const userToken = localStorage.getItem("user-token");
   const user = jwtDecode(userToken);
   const userId = user.userDetails._id;
-
-
-  const [userDetails,setUserDetails]=useState({
-    Firstname:"",
-    lastname:"",
-    worksAt:"",
-    livesIN:"",
-    Country:"",
-    relationShip:""
-
-  })
-  const handleChange=(e)=>
-  {
-       setUserDetails({...userDetails,[e.target.name]:e.target.value});
-  }
-  const updateUserDetails=()=>
-  {
-     axios.put(`${base_url}\${userId}`,{
-      userId,userDetails
-     }).then((res)=>
-     {
-      console.log(res);
-     }).catch((err)=>
-     {
-      console.log(err);
-     })
-  }
-
+  const dispatch=useDispatch();
   
+
+  const [userDetails, setUserDetails] = useState({
+    firstname: "",
+    lastname: "",
+    worksAt: "",
+    livesin: "",
+    Country: "",
+    relationShip: "",
+    profilePicture: "",
+    coverPicture: "",
+    about:""
+  });
+  const handleChange = (e) => {
+    setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
+  };
+  const handlePhoto = (e) => {
+    setUserDetails({ ...userDetails, [e.target.name]: e.target.files[0] });
+  };
+  const updateUserDetails = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+   
+    formData.append("profilePicture", userDetails.profilePicture);
+    formData.append("coverPicture",userDetails.coverPicture);
+   
+    formData.append("firstname", userDetails.firstname);
+    formData.append("lastname",userDetails.lastname);
+    formData.append("worksAt",userDetails.worksAt);
+    formData.append("livesin",userDetails.livesin);
+    formData.append("relationship",userDetails.relationShip);
+    formData.append("about",userDetails.about);
+  
+    formData.append("userId", userId);
+  setModalOpened(false);
+    axios
+      .put(`${base_url}/user/${userId}`, formData)
+      .then((res) => {
+        console.log(res);
+        dispatch(UserDetails(userId));
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <Modal
@@ -48,18 +68,20 @@ function ProfileModal({ modalOpened, setModalOpened }) {
       }
       overlayOpacity={0.55}
       overlayBlur={3}
-      size="55%"
+      size="44%"
       opened={modalOpened}
       onClose={() => setModalOpened(false)}
     >
-      <form className="infoForm">
-        <h3>Your info</h3>
 
-        <div>
+<h3>Your info</h3>
+      <form className="infoForm">
+       
+
+        
           <input
             type="text"
             className="infoInput"
-            name="FirstName"
+            name="firstname"
             placeholder="First Name"
             onChange={handleChange}
           />
@@ -67,27 +89,27 @@ function ProfileModal({ modalOpened, setModalOpened }) {
           <input
             type="text"
             className="infoInput"
-            name="LastName"
+            name="lastname"
             placeholder="Last Name"
             onChange={handleChange}
           />
-        </div>
+      
 
-        <div>
+        
           <input
             type="text"
             className="infoInput"
-            name="worksAT"
+            name="worksAt"
             placeholder="Works at"
             onChange={handleChange}
           />
-        </div>
+        
 
-        <div>
+       
           <input
             type="text"
             className="infoInput"
-            name="livesIN"
+            name="livesin"
             placeholder="LIves in"
             onChange={handleChange}
           />
@@ -99,9 +121,9 @@ function ProfileModal({ modalOpened, setModalOpened }) {
             placeholder="Country"
             onChange={handleChange}
           />
-        </div>
+      
 
-        <div>
+      
           <input
             type="text"
             className="infoInput"
@@ -109,17 +131,30 @@ function ProfileModal({ modalOpened, setModalOpened }) {
             placeholder="RelationShip Status"
             onChange={handleChange}
           />
-        </div>
+            <input
+            type="text"
+            className="infoInput"
+            name="about"
+            placeholder="about"
+            onChange={handleChange}
+          />
+       
 
+      
+          
+          <input
+            name="profilePicture"
+            type="file"
+            accept=".png, .jpg, .jpeg"
+            placeholder="Choose a profile Picture"
+            onChange={handlePhoto}
+          />
+        
+      
 
-        <div>
-            Profile Image 
-            <input type="file" name='profileImg'/>
-            Cover Image
-            <input type="file" name="coverImg" />
-        </div>
-
-        <button className="button infoButton">Update</button>
+        <button className="button infoButton" onClick={updateUserDetails}>
+          Update
+        </button>
       </form>
     </Modal>
   );

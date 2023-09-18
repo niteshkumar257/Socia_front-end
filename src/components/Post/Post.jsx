@@ -19,6 +19,8 @@ const Post = ({ data }) => {
   const user = jwtDecode(userToken);
   const userId = user.userDetails._id;
  
+
+  console.log(data);
   const [liked, setLiked] = useState(data.likes?.includes(userId));
   const [likes, setLikes] = useState(data.likes.length);
   const [isEditClicked,setIsEditCliked]=useState(false);
@@ -83,10 +85,11 @@ const Post = ({ data }) => {
         setNewMessaage("");
       })
   }
-
+  const baseURL = 'http://localhost:8080'
+  const imageURL = `${baseURL}/images/${data.image}`;
   return (
     <div className="Post">
-      <img src={data.img} alt="" />
+      <img src={imageURL} alt="post image" className="postImage" />
 
       <div className="postReact">
         {

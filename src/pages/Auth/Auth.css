@@ -51,12 +51,13 @@
 
 
   .infoForm{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: repeat(5, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
     gap: 2rem;
-    width: 300px;
+    width: 150px;
    
   }
   
@@ -67,6 +68,8 @@
     border-radius: 8px;
     padding: 20px;
     flex:1;
+    width: 200px;
+    max-width: 200px;
   }
   
   .infoForm>div{
