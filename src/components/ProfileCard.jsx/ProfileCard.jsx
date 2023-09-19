@@ -22,9 +22,9 @@ const ProfileCard = ({ userDetails }) => {
     (post) => post.userId === userDetails?._id
   );
 
-  const baseURL = "http://localhost:8080";
-  const imageURL = `${baseURL}/images/${userDetails?.profilePicture}`;
-  const coverUrl = `${baseURL}/images/${userDetails?.coverPicture}`;
+ 
+  const imageURL = `${base_url}/images/${userDetails?.profilePicture}`;
+  const coverUrl = `${base_url}/images/${userDetails?.coverPicture}`;
 
 
   // open modal follwer 

@@ -80,7 +80,7 @@ console.log(userInfo);
   console.log(profileDetails?.userInfo?.profilePicture);
 
   const baseURL = 'http://localhost:8080'
-  const profilePicture=`${baseURL}/images/${profileDetails?.userInfo?.profilePicture}`
+  const profilePicture=`${base_url}/images/${profileDetails?.userInfo?.profilePicture}`
   return (
     <div className="PostShare">
       <img src={profilePicture} alt="" />

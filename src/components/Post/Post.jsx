@@ -89,7 +89,7 @@ const Post = ({ data }) => {
       })
   }
   const baseURL = 'http://localhost:8080'
-  const imageURL = `${baseURL}/images/${data.image}`;
+  const imageURL = `${base_url}/images/${data.image}`;
   return (
     <div className="Post">
       <img src={imageURL} alt="post image" className="postImage" />

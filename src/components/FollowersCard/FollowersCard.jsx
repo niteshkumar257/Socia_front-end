@@ -73,7 +73,7 @@ const FollowersCard = () => {
         }
      }
     
-     const baseURL = 'http://localhost:8080'
+     
    
   return (
     <div className="FollowersCard">
@@ -87,7 +87,7 @@ const FollowersCard = () => {
             return( follower._id!=userId &&   !follower.followers.includes(userId) && 
                 <div key={id} className="follower">
                     <div>
-                        <img src={`${baseURL}/images/${follower?.profilePicture}`} alt="" className='followerImage' />
+                        <img src={`${base_url}/images/${follower?.profilePicture}`} alt="" className='followerImage' />
                         <div className="name">
                             <span>{follower?.name}</span>
                             <span>@{follower.username}</span>
