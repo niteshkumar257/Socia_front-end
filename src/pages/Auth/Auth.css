@@ -1,11 +1,12 @@
-.Auth {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.parentContainer{
+    width: 100%;
     height: 100vh;
-    gap: 4rem;
-    position: relative;
-  }
+      display: flex;
+      justify-content: center;
+     align-items: center;
+    
+}
+
   
   .Auth > div {
     display: flex;
@@ -51,12 +52,13 @@
 
 
   .infoForm{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: repeat(5, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
     gap: 2rem;
-    width: 300px;
+    width: 150px;
    
   }
   
@@ -67,6 +69,8 @@
     border-radius: 8px;
     padding: 20px;
     flex:1;
+  
+    max-width: 200px;
   }
   
   .infoForm>div{
@@ -97,9 +101,10 @@
   /* Login.css */
 
 .login-container {
-  width: 400px;
+  width: 300px;
   margin: 0 auto;
   padding: 20px;
+  height: 300px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -128,14 +133,14 @@ input{
 
 .login-form input[type="text"],
 .login-form input[type="password"] {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
 }
 
 .login-form button {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   background-color: #007bff;
   color: #fff;
@@ -157,10 +162,14 @@ input{
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   background-color: #fff;
+  height:500px;
+ 
+ 
 }
 
 .form-group{
   width: 300px;
+ 
  
 }
 .register-container h2 {
@@ -181,7 +190,7 @@ input{
 
 .register-form input[type="text"],
 .register-form input[type="password"] {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;

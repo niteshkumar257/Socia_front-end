@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogin } from '../../slices/Authslice';
 import { useNavigate,Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -25,12 +27,22 @@ const Login = () => {
 
   const handleForm = (e) => {
     e.preventDefault();
+    if(!data?.username){
+     return toast.error("username is required");
+    }
+    if(!data?.password) {
+      return  toast.error("password is required");
+    }
     dispatch(userLogin(data));
   };
 
   
 
   return (
+
+    <div className='parentContainer'>
+
+  
     <div className="login-container">
       <h2>Login</h2>
       <form className="login-form" onSubmit={handleForm}>
@@ -59,6 +71,8 @@ const Login = () => {
         <button type="submit">Login</button>
         <Link to="/register">Register</Link>
       </form>
+    </div>
+  
     </div>
   );
 };

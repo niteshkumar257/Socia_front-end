@@ -1,95 +1,110 @@
-.ProfileCard{
-    border-radius: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    gap: 1rem;
-    overflow-x: clip;
-    background: var(--cardColor);
+.ProfileCard {
+  /* Styles for the outer container of the profile card */
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 1rem;
+  overflow-x: clip;
+  background: var(--cardColor); /* Assuming you have a variable for card background color */
 }
 
-.ProfileImages{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.ProfileImages {
+  /* Styles for the container of profile images */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.ProfileImages>img:nth-of-type(1){
-    width: 100%;
+.ProfileImages > img:nth-of-type(1) {
+  /* Styles for the cover image (background) */
+  width: 100%;
+  /* You may want to add more styles here */
 }
 
-.ProfileImages>img:nth-of-type(2)
-{
-    width: 6rem;
-    border-radius: 50%;
-    position: absolute;
-    bottom: -3rem;
-    box-shadow: var(--profileShadow);
+.ProfileImages > img:nth-of-type(2) {
+  /* Styles for the profile image (avatar) */
+  width: 6rem;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -3rem;
+  box-shadow: var(--profileShadow); /* Assuming you have a variable for the shadow */
+  /* You may want to add more styles here */
 }
 
-.ProfileName{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3rem;
-    gap: 10px;
+.ProfileName {
+  /* Styles for the profile name section */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+  gap: 10px;
 }
 
-.ProfileName>span:nth-of-type(1)
-{
-    font-weight: bold;
+.ProfileName > span:nth-of-type(1) {
+  /* Styles for the user's name (firstname) */
+  font-weight: bold;
 }
 
 /* Follow Status */
 .followStatus {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-  }
-  
-  .followStatus > hr {
-    width: 85%;
-    border: 1px solid var(--hrColor);
-  }
-  
-  .followStatus > div {
-    display: flex;
-    gap: 1rem;
-    width: 80%;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .follow {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    align-items: center;
-    justify-content: center;
-  }
-  .follow > span:nth-of-type(1) {
-    font-weight: bold;
-  }
-  
-  .follow > span:nth-of-type(2) {
-    color: var(--gray);
-    font-size: 13px;
-  }
-  
-  .vl {
-    height: 150%;
-    border-left: 2px solid var(--hrColor);
-  }
+  /* Styles for the follow status section */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
 
+.followStatus > hr {
+  /* Styles for horizontal rule dividers */
+  width: 85%;
+  border: 1px solid var(--hrColor); /* Assuming you have a variable for HR color */
+}
 
-  .ProfileCard>span{
-      font-weight: bold;
-      color: orange;
-      align-self: center;
-      margin-bottom: 1rem;
-      cursor: pointer;
-  }
+.followStatus > div {
+  /* Styles for the container of follow statistics */
+  display: flex;
+  gap: 1rem;
+  width: 80%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.follow {
+  /* Styles for each follow statistic */
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.follow > span:nth-of-type(1) {
+  /* Styles for the numeric count (e.g., followers count) */
+  font-weight: bold;
+}
+
+.follow > span:nth-of-type(2) {
+  /* Styles for the label (e.g., "Followers") */
+  color: var(--gray); /* Assuming you have a variable for text color */
+  font-size: 13px;
+}
+
+.vl {
+  /* Styles for vertical dividers between follow statistics */
+  height: 150%;
+  border-left: 2px solid var(--hrColor); /* Assuming you have a variable for HR color */
+}
+
+.ProfileCard > span {
+  /* Styles for the "My Profile" link at the bottom */
+  font-weight: bold;
+  color: orange; /* Text color for the link */
+  align-self: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  /* You may want to add more styles here */
+}

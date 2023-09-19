@@ -10,19 +10,24 @@ import { BiHomeSmile } from "react-icons/bi";
 import { GrNotification } from "react-icons/gr";
 import { BsChatDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 const RightSide = () => {
   const [modalOpened, setModalOpened] = useState(false);
+  const navigate=useNavigate();
+  const {id:currentUserId}=useParams();
   return (
     <div className="RightSide">
       <div className="navIcons">
         <Link
           to="/profile"
           style={{ textDecoration: "none", color: "inherit" }}
+          className={currentUserId?'icon':"color-icon"}
         >
           <BiHomeSmile
             size={30}
             style={{ textDecoration: "none", color: "inherit" }}
+            className={!currentUserId?'icon':"color-icon"}
           />
         </Link>
 
@@ -35,8 +40,10 @@ const RightSide = () => {
           style={{ textDecoration: "none", color: "inherit" }}
         />
         <BsChatDots
+          onClick={()=>navigate('/chat')}
+         
           size={30}
-          style={{ textDecoration: "none", color: "inherit" }}
+          style={{ textDecoration: "none", color: "inherit",cursor:'pointer' }}
         />
       </div>
 

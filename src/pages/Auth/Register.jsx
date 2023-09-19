@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userRegister } from '../../slices/Authslice';
-import { Link } from 'react-router-dom';
-
+import { Link ,useNavigate} from 'react-router-dom';
+import {toast} from "react-toastify"
 
 const Register = () => {
   const dispatch = useDispatch();
   const Auth = useSelector((state) => state.Auth);
+  const navigate=useNavigate();
   const [data, setData] = useState({
     username: '',
     firstname: '',
@@ -20,11 +21,18 @@ const Register = () => {
 
   const handleForm = (e) => {
     e.preventDefault();
-    console.log(data);
+
+    if(!data.username) return toast.error("username is requiredd");
+    if(!data.firstname) return toast.error("firstname is required");
+    if(!data.lastname) return toast.error("lastname is required");
+    if(!data.password) return toast.error("password is required");
     dispatch(userRegister(data));
+    navigate('/login');
   };
 
   return (
+    <div className='parentContainer'>
+ 
     <div className="register-container">
       <h2>Register</h2>
       <form className="register-form" onSubmit={handleForm}>
@@ -75,6 +83,8 @@ const Register = () => {
         <button type="submit">Register</button>
         <Link to="/login">Login</Link>
       </form>
+    </div>
+         
     </div>
   );
 };

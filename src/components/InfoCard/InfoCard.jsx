@@ -24,6 +24,8 @@ const InfoCard = ({ProfileDetails}) => {
       dispatch(userLogout());
       navigate('/login');
   }
+
+ 
   return (
     <div className="InfoCard">
       <div className="infoHead">
@@ -35,6 +37,7 @@ const InfoCard = ({ProfileDetails}) => {
             onClick={() => setModalOpened(true)}
           />
           <ProfileModal
+          
             modalOpened={modalOpened}
             setModalOpened={setModalOpened}
           />
@@ -45,21 +48,21 @@ const InfoCard = ({ProfileDetails}) => {
         <span>
           <b>Status </b>
         </span>
-        <span>in Relationship</span>
+        <span>{ProfileDetails?.userInfo?.relationship}</span>
       </div>
 
       <div className="info">
         <span>
           <b>Lives in </b>
         </span>
-        <span>Multan</span>
+        <span>{ProfileDetails?.userInfo?.livesin}</span>
       </div>
 
       <div className="info">
         <span>
           <b>Works at </b>
         </span>
-        <span>Zainkeepscode inst</span>
+        <span>{ProfileDetails?.userInfo?.worksAt}</span>
       </div>
 
       <button className="button logout-button" onClick={logoutHandler}>Logout</button>

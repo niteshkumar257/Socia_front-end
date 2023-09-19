@@ -12,13 +12,18 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { AiOutlineLike ,AiFillLike} from "react-icons/ai";
 import { AiOutlineEdit } from "react-icons/ai";
 import jwtDecode from "jwt-decode";
+import { useParams } from "react-router-dom";
 
 const Post = ({ data }) => {
   const dispatch = useDispatch();
   const userToken = localStorage.getItem("user-token");
   const user = jwtDecode(userToken);
   const userId = user.userDetails._id;
+  const {id}=useParams();
+  console.log(id);
  
+
+  console.log(data);
   const [liked, setLiked] = useState(data.likes?.includes(userId));
   const [likes, setLikes] = useState(data.likes.length);
   const [isEditClicked,setIsEditCliked]=useState(false);
@@ -83,10 +88,11 @@ const Post = ({ data }) => {
         setNewMessaage("");
       })
   }
-
+  const baseURL = 'http://localhost:8080'
+  const imageURL = `${baseURL}/images/${data.image}`;
   return (
     <div className="Post">
-      <img src={data.img} alt="" />
+      <img src={imageURL} alt="post image" className="postImage" />
 
       <div className="postReact">
         {
