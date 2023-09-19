@@ -2,6 +2,7 @@ import {createSlice,createAsyncThunk} from "@reduxjs/toolkit";
 import axios from 'axios';
 import { base_url } from "../utils/apiRoutes";
 import jwt_decode from "jwt-decode";
+import {toast} from "react-toastify"
 
 
 
@@ -50,8 +51,9 @@ const AuthSlice=createSlice({
          state.Token=action.payload;
          state.isAuth=true;
          state.userDetails=jwt_decode(action.payload).userDetails;
-          console.log(action.payload);
+         
          localStorage.setItem("user-token",action.payload);
+         toast.success("user logged");
         
         
         
@@ -60,6 +62,7 @@ const AuthSlice=createSlice({
         })
         builder.addCase(userLogin.rejected, (state, action) => {
          state.isError = true;
+         toast.error("userId or password is incorrect");
         })
         builder.addCase(userRegister.pending,(state,action)=>
         {

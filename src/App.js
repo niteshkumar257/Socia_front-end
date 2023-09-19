@@ -9,6 +9,8 @@ import { BrowserRouter, Route, Routes ,Navigate} from "react-router-dom";
 import {useDispatch,useSelector} from "react-redux";
 import { userLogin } from "./slices/Authslice";
 import Chat from "./pages/Chat/Chat";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 function App() {
 
   const Auth=useSelector((state)=>state.Auth);
@@ -25,7 +27,7 @@ function App() {
         <Routes>
         <Route path='/'element={user?<Navigate to='profile'/>:<Navigate to='/login'/>} />
           <Route path="/profile" element={user?<Profile/>:<Navigate to='/login'/>}/>
-          <Route path="/login" element={user?<Navigate to="/profile"/>:<Login/>}/>
+          <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={user?<Navigate to="/profile"/>:<Register/>}/>
           <Route    path="/profile/:id" element={<Profile/>}/>
           <Route    path="/chat" element={user?<Chat/>:<Navigate to="/login"/>} />
@@ -33,6 +35,7 @@ function App() {
         </Routes>
 
         {/* <Auth/> */}
+        <ToastContainer/>
       </div>
     </BrowserRouter>
   );

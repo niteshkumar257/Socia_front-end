@@ -23,3 +23,10 @@
     width: 80%;
     align-self: center;
 }
+icon{
+    text-decoration: none;
+    color: inherit;
+}
+color-icon{
+    color: blue;
+}

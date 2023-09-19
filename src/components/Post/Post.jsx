@@ -12,12 +12,15 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { AiOutlineLike ,AiFillLike} from "react-icons/ai";
 import { AiOutlineEdit } from "react-icons/ai";
 import jwtDecode from "jwt-decode";
+import { useParams } from "react-router-dom";
 
 const Post = ({ data }) => {
   const dispatch = useDispatch();
   const userToken = localStorage.getItem("user-token");
   const user = jwtDecode(userToken);
   const userId = user.userDetails._id;
+  const {id}=useParams();
+  console.log(id);
  
 
   console.log(data);

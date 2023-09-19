@@ -10,6 +10,7 @@ import { UserDetails } from "../../slices/ProfileSlice";
 import jwtDecode from "jwt-decode";
 import { useParams } from "react-router-dom";
 
+
 const Profile = () => {
   const userToken = localStorage.getItem("user-token");
   const user = jwtDecode(userToken);
@@ -36,6 +37,8 @@ const Profile = () => {
       </div>
 
       <RightSide />
+    
+      
     </div>
   );
 };
