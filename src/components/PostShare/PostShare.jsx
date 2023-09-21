@@ -12,6 +12,7 @@ import axios from "axios";
 import { base_url } from "../../utils/apiRoutes";
 import {AiOutlineClose} from "react-icons/ai";
 import { UserDetails } from "../../slices/ProfileSlice";
+import dummyImage from "../../img/dummyImage.png";
 
 
 const PostShare = () => {
@@ -83,7 +84,10 @@ console.log(userInfo);
   const profilePicture=`${base_url}/images/${profileDetails?.userInfo?.profilePicture}`
   return (
     <div className="PostShare">
-      <img src={profilePicture} alt="" />
+      {
+        !profileDetails?.userInfo?.profilePicture ? <img src={dummyImage}/> :  <img src={profilePicture} alt="" />
+      }
+     
       <div>
         <input
           type="text"
@@ -116,6 +120,9 @@ console.log(userInfo);
         </div>
         {postDetails?.image && (
   <div style={{ position: 'relative', width: '90%', height: '400px' }}>
+    {
+
+    }
     <img
       style={{
         height: 400,

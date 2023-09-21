@@ -88,11 +88,13 @@ const Post = ({ data }) => {
         setNewMessaage("");
       })
   }
-  const baseURL = 'http://localhost:8080'
+  
   const imageURL = `${base_url}/images/${data.image}`;
+  console.log(imageURL);
   return (
     <div className="Post">
-      <img src={imageURL} alt="post image" className="postImage" />
+      {data.image &&    <img src={imageURL} alt="post image" className="postImage" />}
+    
 
       <div className="postReact">
         {

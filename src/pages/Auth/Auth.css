@@ -4,7 +4,17 @@
       display: flex;
       justify-content: center;
      align-items: center;
+     column-gap: 0px;
     
+    
+}
+.lottie-container{
+  flex:0.95;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 150px;
+ 
 }
 
   
@@ -100,15 +110,37 @@ grid-row-gap: 0px;
   }
   /* Login.css */
 
+  .login-parent-container{
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  .register-parent-container
+  {
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-content: center; 
+  }
 .login-container {
-  width: 300px;
+  
+  
+  width: 350px;
   margin: 0 auto;
   padding: 20px;
-  height: 300px;
+  height: 450px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 21px;
+  
+ 
 }
 input{
   width:300px;
@@ -122,6 +154,7 @@ input{
 
 .login-form .form-group {
   margin-bottom: 15px;
+
 }
 
 .login-form label {
@@ -134,14 +167,17 @@ input{
 .login-form input[type="text"],
 .login-form input[type="password"] {
   width: 90%;
+  height:30px;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  border: 0.3px solid #ccc;
+  border-radius: 9px;
 }
 
 .login-form button {
-  width: 90%;
-  padding: 10px;
+  width:200px;
+  height: 40px;
+  border-radius: 9px;
+ 
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -155,14 +191,19 @@ input{
 /* Register.css */
 
 .register-container {
-  width: 300px;
+  width: 350px;
   margin: 0 auto;
   padding: 20px;
+   height:30px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 21px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   background-color: #fff;
   height:500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
  
  
 }
@@ -193,11 +234,11 @@ input{
   width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 9px;
 }
 
 .register-form button {
-  width: 100%;
+ width: 200px;
   padding: 10px;
   background-color: #007bff;
   color: #fff;
@@ -208,4 +249,23 @@ input{
 
 .register-form button:hover {
   background-color: #0056b3;
+}
+
+.button-container{
+  padding: 10px ;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input:focus{
+  outline: none;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.text-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }

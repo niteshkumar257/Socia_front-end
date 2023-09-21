@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userRegister } from '../../slices/Authslice';
 import { Link ,useNavigate} from 'react-router-dom';
 import {toast} from "react-toastify"
-
+import Lottie from 'lottie-react';
+import userLottie1 from "../../img/email-marketing.json";
+import Loader from '../../components/Loader/Loader';
 const Register = () => {
   const dispatch = useDispatch();
   const Auth = useSelector((state) => state.Auth);
@@ -27,12 +29,41 @@ const Register = () => {
     if(!data.lastname) return toast.error("lastname is required");
     if(!data.password) return toast.error("password is required");
     dispatch(userRegister(data));
-    navigate('/login');
+   
+    
+  
+   
   };
 
+  useEffect(()=>{
+
+
+    console.log(Auth?.username);
+    console.log(Auth?.isLoading,Auth?.username)
+      if( Auth?.username)
+      {
+        navigate('/login');
+        return ;
+      }
+
+  },[Auth])
+
+ 
   return (
     <div className='parentContainer'>
  
+ <div className="lottie-container">
+    <Lottie
+        animationData={userLottie1}
+        loop={true} 
+        autoplay={true} 
+        speed={1.5} // Adjust the animation speed
+  
+      />
+    </div>
+
+<div className="register-parent-container">
+
     <div className="register-container">
       <h2>Register</h2>
       <form className="register-form" onSubmit={handleForm}>
@@ -80,11 +111,18 @@ const Register = () => {
             placeholder="Enter your password"
           />
         </div>
+        <div className="button-container">
         <button type="submit">Register</button>
-        <Link to="/login">Login</Link>
+  </div>
+      
+        <div className="text-container">
+ <span>Already have account ? , </span>
+  <Link to="/login">login</Link>
+ </div>
       </form>
     </div>
-         
+    </div>
+         <Loader open={Auth?.isLoading}/>
     </div>
   );
 };

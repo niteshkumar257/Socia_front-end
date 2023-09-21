@@ -6,6 +6,7 @@ import {toast} from "react-toastify"
 
 
 
+
 export const userLogin=createAsyncThunk("userLogin",async(userInfo)=>
 {
   
@@ -30,6 +31,7 @@ const AuthSlice=createSlice({
        userDetails:null,
        isAdmin:false,
        isAuth:false,
+       username:null
        
     },
     reducers:{
@@ -62,6 +64,7 @@ const AuthSlice=createSlice({
         })
         builder.addCase(userLogin.rejected, (state, action) => {
          state.isError = true;
+         state.isLoading=false;
          toast.error("userId or password is incorrect");
         })
         builder.addCase(userRegister.pending,(state,action)=>
@@ -73,6 +76,7 @@ const AuthSlice=createSlice({
         {
              state.isLoading=false;
              console.log(action.payload);
+             state.username=action.payload;
         })
         builder.addCase(userRegister.rejected,(state,action)=>
         {

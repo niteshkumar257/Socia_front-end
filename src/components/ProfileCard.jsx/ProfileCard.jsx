@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import coverPicture from "../../img/background2.jpg";
 import { useParams } from "react-router-dom";
 import { UserDialog } from "../UserListModal/UserList";
+import dummyProfileImage from "../../img/dummyImage.png"
 
 const ProfileCard = ({ userDetails }) => {
   const ProfilePage = true;
@@ -45,6 +46,13 @@ const ProfileCard = ({ userDetails }) => {
           src={coverPicture}
           alt="profile image"
         />
+        {
+          !userDetails?.profilePicture ? <img  style={{
+            height: 100,
+            width: 100,
+            borderRadius: "50%",
+          }} src={dummyProfileImage}/>
+        :
         <img
           style={{
             height: 100,
@@ -54,6 +62,7 @@ const ProfileCard = ({ userDetails }) => {
           src={imageURL}
           alt="profile image"
         />
+}
       </div>
 
       <div className="ProfileName">
